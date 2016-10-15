@@ -331,6 +331,14 @@ class ExtraButtons_Options(QtGui.QMenu):
 
         return hbox
 
+    def markdown_switch_between_classes_and_inline(self):
+        cb = self.create_checkbox(const.MARKDOWN_CLASSFUL_PYGMENTS,
+                                  None,
+                                  self.c.get(const.CONFIG_LABELS,
+                                              "markdown_classful_pygments_label"))
+
+        return self.put_elems_in_box((cb,), const.HBOX, const.WIDGET)
+
     def init_markdown_option(self):
         md_groupbox = QtGui.QGroupBox(
                 self.c.get(const.CONFIG_LABELS, "md_groupbox"),
@@ -345,6 +353,9 @@ class ExtraButtons_Options(QtGui.QMenu):
                                            self.show_markdown_dialog))
 
         md_vbox = QtGui.QVBoxLayout()
+
+        # Markdown switch between user style sheet and inline styling
+        md_vbox.addLayout(self.markdown_switch_between_classes_and_inline())
 
         # Markdown syntax highlighting
         md_vbox.addLayout(self.markdown_syntax_styles_option())
@@ -361,6 +372,7 @@ class ExtraButtons_Options(QtGui.QMenu):
 
         # override disabled buttons in rendered Markdown
         md_vbox.addLayout(self.override_disabled_buttons_rendered_markdown())
+
 
         md_vbox.setSpacing(self.c.getint(const.CONFIG_QT, "spacing_buttons"))
 
@@ -381,7 +393,8 @@ class ExtraButtons_Options(QtGui.QMenu):
                                                 const.BUTTON_PLACEMENT,
                                                 const.MARKDOWN_OVERRIDE_EDITING,
                                                 const.MARKDOWN,
-                                                const.STYLE_TABLE
+                                                const.STYLE_TABLE,
+                                                const.MARKDOWN_CLASSFUL_PYGMENTS
                                             )]
         num_items = len(l) / 2.0
         num_items = num_items + 0.5 if (num_items % 1.0 > 0.0) else num_items

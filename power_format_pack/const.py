@@ -94,6 +94,7 @@ MARKDOWN_LINE_NUMS            = "markdown_line_nums"
 MARKDOWN_CODE_DIRECTION       = "markdown_code_direction"
 MARKDOWN_ALWAYS_REVERT        = "markdown_always_revert"
 MARKDOWN_OVERRIDE_EDITING     = "markdown_override_editing"
+MARKDOWN_CLASSFUL_PYGMENTS    = "markdown_classful_pygments"
 BUTTON_PLACEMENT              = "button_placement"
 STYLE_TABLE                   = "style_table"
 
